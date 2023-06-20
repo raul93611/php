@@ -1,31 +1,18 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-session_start();
+require 'includes/init.php';
+$conn = require 'includes/db.php';
 
-require 'includes/database.php';
-
-$conn = getDB();
-
-$sql = "SELECT * FROM article ORDER BY published_at DESC";
-
-$results = mysqli_query($conn, $sql);
-
-if ($results === false) {
-  echo mysqli_error($conn);
-} else {
-  $articles = mysqli_fetch_all($results, MYSQLI_ASSOC);
-}
+$articles = Article::getAll($conn);
 
 require 'includes/header.php';
 ?>
-<?php if (isset($_SESSION["is_logged_in"]) and $_SESSION["is_logged_in"]) : ?>
+<?php if (Auth::isLoggedIn()) : ?>
   <p>You are logged in. <a href="logout.php">Log Out</a></p>
+  <p><a href="new-article.php">New Article</a></p>
 <?php else : ?>
   <p>You are not logged in. <a href="login.php">Log In</a></p>
 <?php endif; ?>
 
-<a href="new-article.php">New Article</a>
 
 <?php if (empty($articles)) : ?>
   <p>No results found!</p>

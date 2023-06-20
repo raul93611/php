@@ -7,3 +7,10 @@ CREATE TABLE article(
   published_at DATETIME,
   PRIMARY KEY(id)
 );
+
+CREATE TABLE user(
+  id INT NOT NULL AUTO_INCREMENT UNIQUE,
+  username VARCHAR(255) UNIQUE,
+  password VARCHAR(255),
+  PRIMARY KEY(id)
+);
