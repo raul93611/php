@@ -1,6 +1,7 @@
 <?php
-require 'includes/init.php';
-$conn = require 'includes/db.php';
+require '../includes/init.php';
+Auth::requireLogin();
+$conn = require '../includes/db.php';
 
 if (isset($_GET['id'])) {
   $article = Article::getById($conn, $_GET['id']);
@@ -13,15 +14,15 @@ if (isset($_GET['id'])) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if($article->delete($conn)){
-    Url::redirect('/');
+    Url::redirect('/admin');
   }
 }
 ?>
-<?php require 'includes/header.php'; ?>
+<?php require '../includes/header.php'; ?>
 <h2>Delete Article</h2>
 <form action="" method="post">
   <p>are you sure?</p>
   <a href="article.php?id=<?= $article->id; ?>">Cancel</a>
   <button>Delete</button>
 </form>
-<?php require 'includes/footer.php'; ?>
+<?php require '../includes/footer.php'; ?>

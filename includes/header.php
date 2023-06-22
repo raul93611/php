@@ -12,5 +12,15 @@
   <header>
     <h1>Blog</h1>
   </header>
-
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <?php if (Auth::isLoggedIn()) : ?>
+        <li><a href="/admin/">Admin</a></li>
+        <li><a href="/logout.php">Log Out</a></li>
+      <?php else : ?>
+        <li><a href="/login.php">Log In</a></p></li> 
+      <?php endif; ?>
+    </ul>
+  </nav>
   <main>

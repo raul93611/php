@@ -13,6 +13,16 @@ class Article {
     return $results->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  public static function getPage($conn, $limit, $offset){
+    $sql = "SELECT * FROM article ORDER BY published_at LIMIT :limit OFFSET :offset";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':limit',$limit, PDO::PARAM_INT);
+    $stmt->bindValue(':offset',$offset, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
   public static function getById($conn, $id, $columns = '*') {
     $sql = "SELECT {$columns} FROM article WHERE id = :id";
     $stmt = $conn->prepare($sql);
@@ -88,5 +98,9 @@ class Article {
     } else {
       return false;
     }
+  }
+
+  public static function getTotal($conn){
+    return $conn->query("SELECT COUNT(*) FROM article")->fetchColumn();
   }
 }
