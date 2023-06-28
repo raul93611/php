@@ -21,6 +21,7 @@ require '../includes/header.php';
     <thead>
       <tr>
         <th>Title</th>
+        <th>Published At</th>
       </tr>
     </thead>
     <tbody>
@@ -28,6 +29,14 @@ require '../includes/header.php';
         <tr>
           <td>
             <a href="article.php?id=<?= $article['id'] ?>"><?php echo htmlspecialchars($article['title']); ?></a>
+          </td>
+          <td>
+            <?php if ($article['published_at']) : ?>
+              <time><?= $article['published_at'] ?></time>
+            <?php else : ?>
+              Unpublished
+              <button class="publish" data-id="<?= $article['id'] ?>">Publish</button>
+            <?php endif; ?>
           </td>
         </tr>
       <?php endforeach; ?>

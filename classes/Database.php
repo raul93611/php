@@ -1,10 +1,10 @@
 <?php
 class Database {
   public function getConn() {
-    $db_host = 'localhost';
+    $db_host = 'database:3306';
     $db_name = 'cms';
     $db_user = 'root';
-    $db_pass = '';
+    $db_pass = 'tiger';
 
     $dsn = "mysql:host=$db_host;dbname=$db_name;charset=utf8";
     try {
