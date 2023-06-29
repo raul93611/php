@@ -32,8 +32,26 @@ $('.publish').click(function (e) {
   $.ajax({
     url: '/admin/publish-article.php',
     type: 'POST',
-    data: { id: id }
-  }).done(function (data) {
-    button.parent().html(data);
+    data: { id: id },
+    success: function (data) {
+      button.parent().html(data);
+    },
+    error: function (xhr, status, error) {
+      alert('An error occurred');
+    }
   });
+});
+
+$('#contactForm').validate({
+  rules: {
+    email: {
+      required: true
+    },
+    subject: {
+      required: true
+    },
+    message: {
+      required: true
+    }
+  }
 });

@@ -17,7 +17,7 @@ require '../includes/header.php';
 <?php if (empty($articles)) : ?>
   <p>No results found!</p>
 <?php else : ?>
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <th>Title</th>

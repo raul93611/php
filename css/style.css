@@ -1,0 +1,7 @@
+ul#index{
+  padding-left: 0;
+}
+
+ul#index li {
+  list-style: none;
+}

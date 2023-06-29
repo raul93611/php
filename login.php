@@ -18,14 +18,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <p><?= $error; ?></p>
 <?php endif; ?>
 <form action="" method="post">
-  <div>
+  <div class="form-group">
     <label for="username">Username</label>
-    <input type="text" name="username" id="username">
+    <input class="form-control" type="text" name="username" id="username">
   </div>
-  <div>
+  <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" name="password" id="password">
+    <input class="form-control" type="password" name="password" id="password">
   </div>
-  <button>Login</button>
+  <button class="btn btn-primary">Login</button>
 </form>
 <?php require 'includes/footer.php'; ?>

@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $article->content = $_POST["content"];
   $article->published_at = $_POST["published_at"];
 
-  $category_ids = $_POST["categories"];
+  $category_ids = $_POST["categories"] ?? [];
 
   if ($article->create($conn)) {
     $article->setCategories($conn, $category_ids);

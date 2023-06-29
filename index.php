@@ -9,7 +9,7 @@ require 'includes/header.php';
 <?php if (empty($articles)) : ?>
   <p>No results found!</p>
 <?php else : ?>
-  <ul>
+  <ul id="index">
     <?php foreach ($articles as $article) : ?>
       <li>
         <article>
